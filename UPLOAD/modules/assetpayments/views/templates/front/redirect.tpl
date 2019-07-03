@@ -1,17 +1,12 @@
-{l s='Ожидание перенаправления' mod='assetpayments'}
+{l s='Processing request...' mod='assetpayments'}
 
-<form id="checkout" method="post" action="{$url}">
-    {foreach from=$fields  key=key item=field}
-        {if $field|is_array}
-            {foreach from=$field  key=k item=v}<input type="hidden" name="{$key}[]" value="{$v}" />{/foreach}
-        {else}
-			<input type="hidden" name="{$key}" value="{$field}" />
-        {/if}
-    {/foreach}
+<form id="checkout" method="post" action="{$url}" accept-charset="utf-8">
 
-	<input type="submit" value="{l s='Оплатить' mod='assetpayments'}">
+<input type="hidden" id="data" name="data" value="{$fields}" />
+
 </form>
-
-<script type="text/javascript">
-	$('#checkout').submit();
+<script>
+    window.onload = function() {
+        document.getElementById('checkout').submit();
+    };
 </script>
