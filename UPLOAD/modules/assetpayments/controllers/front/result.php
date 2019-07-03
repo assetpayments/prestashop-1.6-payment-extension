@@ -13,9 +13,9 @@ class AssetPaymentsResultModuleFrontController extends ModuleFrontController
         $order_id = !empty($_GET['OrderId']) ? $_GET['OrderId'] : null;
         $order = new OrderCore(intval($order_id));
 		
-        if (!Validate::isLoadedObject($order)) {
-            die('Заказ не найден');
-        }
+        //if (!Validate::isLoadedObject($order)) {
+        //    die('Заказ не найден');
+        //}
 
         $AssetPaymentsCls = new AssetPaymentsCls();
         $customer = new CustomerCore($order->id_customer);
